@@ -1,0 +1,10 @@
+<!--aquí simplemente tenemos la opción de eliminar al estudiante-->
+<div class="panel-custom">
+	<h3 class="subheader">¿Estás seguro que deseas eliminar al estudiante {{ estudiante.nombre }}?</h2>
+</div>
+<div class="row">
+	<!--asociamos a la directiva ng-click la función removeUser, 
+	que lo que hace es eliminar del array al estudiante-->
+	<div class="large-6 columns"><a ng-click="removeUser()"  class="button expand secondary">Eliminar</a></div>
+	<div class="large-6 columns"> <a href="#/studensts/index" class="button expand secondary">Volver sin eliminar</a></div>
+</div>

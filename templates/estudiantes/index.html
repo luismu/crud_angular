@@ -1,0 +1,25 @@
+<!--si no hay estudiantes que mostrar, con la directiva ng-show comprobamos
+el array estudiantes y mostramos un mensaje-->
+<div class="panel-custom" ng-show="estudiantes.length == 0">
+	<h3 class="subheader">No hay estudiantes para mostrar</h2>
+</div>
+<!--creamos un campo de texto que nos servirá para buscar estudiantes, simplemente
+le damos como ng-model el mismo que le demos al atributo filter en el loop de abajo,
+aparte de un buscador es un autocompletar, y más sencillo no puede ser-->
+<!--sólo si hay estudiantes mostramos el buscador-->
+<input type="text" ng-model="buscador" placeholder="Buscar estudiante" ng-show="estudiantes.length > 0" />
+<!--como nuestros estudiantes no tienen id, la forma de poder eliminarlos es recorriendo
+el array añadiendo la clave id, así podremos saber a cuál hacer referencia, de esta forma
+al añadir estudiantes y no tener definida su id, angularjs le asignará la siguiente al último estudiante
+existente, es decir, un campo autoincremental-->
+	<div class="large-12 columns" ng-repeat="(id,estudiante) in estudiantes | filter: buscador">
+	
+	        <a href="#/info/{{id}}" class="large-12  button expand">
+	        	Id: {{ estudiante.ide}} Nombre: {{ estudiante.nombre }} Apellidos: {{ estudiante.apellidos }} Genero: {{ estudiante.genero }}
+	        </a>
+	       <!--aquí mostramos los dos botones, uno para ir a editar al estudiante y otro para ir a eliminarlo-->
+	        <div class="row">
+				  <div class="large-6 columns"><a href="#/edit/{{id}}" class="button expand success">Editar</a></div>
+				  <div class="large-6 columns"> <a href="#/remove/{{id}}" class="button expand alert">Eliminar</a></div>
+			</div>
+	</div>
